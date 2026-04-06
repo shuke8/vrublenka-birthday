@@ -1535,6 +1535,7 @@ setTimeout(function(){(function(d,w,k,o,g) {var n=d.getElementsByTagName(o)[0],s
     return null;
   }
   function update() {
+    if (window.innerWidth <= 640) { hl.style.display = 'none'; return; }
     var r = findTextRect();
     if (!r) return;
     var pad = 12;
