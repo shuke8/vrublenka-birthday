@@ -874,6 +874,12 @@ B.initFlameAnimations = function () {
     // Добавляем триггер внутрь flameEl
     flameEl.appendChild(clickTrigger);
     
+    // Mobile: touch on flame triggers the original click handler
+    flameEl.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        handleFlameClick(e);
+    }, {passive: false});
+    
     // Находим контейнер с изображением
     var atom = flameEl.querySelector('.tn-atom');
     if (!atom) return;
