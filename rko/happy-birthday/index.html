@@ -874,10 +874,11 @@ B.initFlameAnimations = function () {
     // Добавляем триггер внутрь flameEl
     flameEl.appendChild(clickTrigger);
     
-    // Mobile: touch on flame triggers the original click handler
+    // Mobile: touch on flame simulates click on trigger
     flameEl.addEventListener('touchend', function(e) {
         e.preventDefault();
-        handleFlameClick(e);
+        clickTrigger.style.pointerEvents = 'auto';
+        clickTrigger.click();
     }, {passive: false});
     
     // Находим контейнер с изображением
