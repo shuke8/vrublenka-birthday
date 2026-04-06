@@ -249,6 +249,12 @@ backface-visibility: hidden;
 #rec1808086761 .tn-group[data-group-id="1766264130412000006"] .tn-elem[data-elem-id="1766264027824000003"] .tn-atom {
   line-height: 30px !important;
 }
+/* Mobile done screen readability */
+@media screen and (max-width:640px) {
+  .done-vignette {
+    background: radial-gradient(ellipse 90% 50% at 50% 35%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0) 100%) !important;
+  }
+}
 /* Radial vignette overlay for done screen - applied via JS */
 .done-vignette {
   position: fixed;
