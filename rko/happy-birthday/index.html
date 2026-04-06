@@ -252,8 +252,9 @@ backface-visibility: hidden;
 /* Mobile done screen readability */
 @media screen and (max-width:640px) {
   .done-vignette {
-    background: radial-gradient(ellipse 90% 50% at 50% 35%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0) 100%) !important;
+    background: radial-gradient(ellipse 100% 60% at 50% 30%, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.3) 100%) !important;
   }
+
 }
 /* Radial vignette overlay for done screen - applied via JS */
 .done-vignette {
@@ -429,7 +430,7 @@ B.getTexts = function () {
         ? "С днём рождения!"
         : "С днём рождения!",
     DONE_DESC: mobile
-        ? "Пусть этот день будет наполнен<br>радостью, теплом и приятными<br>моментами, а весь год —<br>лёгкими отчётами, стабильностью<br>и успехом в бизнесе!<br>С уважением,<br>Команда Врублёнки"
+        ? "Пусть этот день принесёт<br>радость, а год — успех!<br><br>С уважением,<br>Команда Врублёнки"
         : "Пусть этот день будет наполнен радостью, теплом и приятными моментами,<br>а весь год — лёгкими отчётами, стабильностью и успехом в бизнесе!<br>С уважением,<br>Команда Врублёнки",
     
     // Последний экран - ДР прошел
@@ -437,7 +438,7 @@ B.getTexts = function () {
         ? "С днём рождения!"
         : "С днём рождения!",
     DONE_DESC_BELATED: mobile
-        ? "Пусть этот день будет наполнен<br>радостью, теплом и приятными<br>моментами, а весь год —<br>лёгкими отчётами, стабильностью<br>и успехом в бизнесе!<br>С уважением,<br>Команда Врублёнки"
+        ? "Пусть этот день принесёт<br>радость, а год — успех!<br><br>С уважением,<br>Команда Врублёнки"
         : "Пусть этот день будет наполнен радостью, теплом и приятными моментами,<br>а весь год — лёгкими отчётами, стабильностью и успехом в бизнесе!<br>С уважением,<br>Команда Врублёнки",
     };
 };
@@ -1601,6 +1602,7 @@ setTimeout(function(){(function(d,w,k,o,g) {var n=d.getElementsByTagName(o)[0],s
       if (group) group.style.rowGap = '12px';
       var vig = document.querySelector('.done-vignette');
       if (vig) vig.style.display = 'block';
+      
       
     }
   }).observe(document.body, {childList:true, subtree:true, attributes:true});
