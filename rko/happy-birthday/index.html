@@ -1098,13 +1098,7 @@ function enableFlameClickToExtinguish() {
     
     function onFlameClick(e) {
     if (!S.manualMode || S.blown) return;
-    
-    // Игнорируем клики на SVG и элементе g - они обрабатываются отдельным обработчиком
-    var target = e.target;
-    if (target.tagName === 'svg' || target.tagName === 'g' || (target.closest && target.closest('svg'))) {
-        return;
-    }
-    
+
     // Получаем элемент пламени - это currentTarget (элемент, на который привязан обработчик)
     var flameEl = e.currentTarget;
     if (!flameEl) return;
@@ -1448,6 +1442,11 @@ document.addEventListener('dblclick', function (e) {
     }
 }
 
+/* Flame atom неинтерактивен — клики перехватывает overlay-триггер или всплывают к .flame */
+.flame .tn-atom {
+    pointer-events: none !important;
+}
+
 /* Улучшение качества рендеринга Lottie анимаций в Safari */
 .flame svg {
     shape-rendering: auto;
@@ -1469,9 +1468,9 @@ document.addEventListener('dblclick', function (e) {
     pointer-events: none; /* Отключаем клики по умолчанию */
 }
 
-/* Разрешаем клики ТОЛЬКО для элемента g внутри SVG */
+/* SVG g элементы тоже неинтерактивны — клики обрабатываются через overlay-триггер */
 .flame svg > g {
-    pointer-events: auto !important;
+    pointer-events: none !important;
     cursor: pointer !important;
 }
 
