@@ -800,8 +800,9 @@ B.initFlameAnimations = function () {
     
     // Создаем отдельный элемент-триггер для кликов размером 31×72px
     var clickTrigger = document.createElement('div');
-    clickTrigger.style.width = '31px';
-    clickTrigger.style.height = '72px';
+    var isMobile = window.innerWidth <= 640;
+    clickTrigger.style.width = isMobile ? '60px' : '31px';
+    clickTrigger.style.height = isMobile ? '120px' : '72px';
     clickTrigger.style.position = 'absolute';
     clickTrigger.style.left = '50%';
     clickTrigger.style.top = '50%';
@@ -812,7 +813,7 @@ B.initFlameAnimations = function () {
     clickTrigger.style.backgroundColor = 'transparent'; // Прозрачный, но кликабельный
     
     // Привязываем обработчик клика к триггеру
-    clickTrigger.addEventListener('click', function(e) {
+    function handleFlameClick(e) {
         e.stopPropagation();
         
         if (!S.manualMode || S.blown) return;
@@ -853,7 +854,9 @@ B.initFlameAnimations = function () {
             }
             if (allOut) blowOut();
         }, 380);
-    });
+    }
+    clickTrigger.addEventListener('click', handleFlameClick);
+    clickTrigger.addEventListener('touchstart', function(e) { e.preventDefault(); handleFlameClick(e); });
     
     // Добавляем триггер внутрь flameEl
     flameEl.appendChild(clickTrigger);
