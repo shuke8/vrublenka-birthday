@@ -1011,6 +1011,8 @@ function updateFlamesByEnergy(currentEnergy) {
     
     for (var i = 0; i < S.flameSchedule.length; i++) {
     var f = S.flameSchedule[i];
+    // Пропускаем пламена, потушенные кликом — их стили менять не нужно
+    if (f.el.getAttribute("data-out") === "1") continue;
     var p = (currentEnergy - f.startE) / (f.endE - f.startE);
     p = U.clamp(p, 0, 1);
     
